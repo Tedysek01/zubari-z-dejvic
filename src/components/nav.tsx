@@ -34,10 +34,8 @@ export function Nav() {
             : "bg-red-500"
         }`}
         style={{
-          top: "calc(-1 * env(safe-area-inset-top, 0px))",
-          paddingTop: scrolled
-            ? "calc(0.75rem + env(safe-area-inset-top, 0px))"
-            : "calc(1.25rem + env(safe-area-inset-top, 0px))",
+          top: "-60px",
+          paddingTop: scrolled ? "calc(0.75rem + 60px)" : "calc(1.25rem + 60px)",
           paddingBottom: scrolled ? "0.75rem" : "1.25rem",
         }}
       >
