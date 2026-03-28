@@ -1,13 +1,6 @@
-import type { Metadata, Viewport } from "next";
+import type { Metadata } from "next";
 import { Cormorant_Garamond, DM_Sans } from "next/font/google";
 import "./globals.css";
-
-export const viewport: Viewport = {
-  width: "device-width",
-  initialScale: 1,
-  viewportFit: "cover",
-  themeColor: "#F5F1EC",
-};
 
 const cormorant = Cormorant_Garamond({
   variable: "--font-cormorant",
@@ -28,6 +21,10 @@ export const metadata: Metadata = {
   title: "Zubaři z Dejvic — Zubní ordinace v Dejvicích",
   description:
     "Kvalitní stomatologie založená na důvěře, precizní práci a individuálním přístupu. Kafkova 16, Praha 6.",
+  other: {
+    "theme-color": "#F5F1EC",
+    "apple-mobile-web-app-status-bar-style": "default",
+  },
 };
 
 const jsonLd = {

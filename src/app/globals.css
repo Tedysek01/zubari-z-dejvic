@@ -321,12 +321,3 @@ html {
   overflow: hidden;
 }
 
-/* ============================================
-   SAFE AREA — iOS notch / Dynamic Island / Safari toolbar
-   Requires viewport-fit=cover in layout.tsx
-   CSS vars used via calc() to ADD to existing padding
-   ============================================ */
-:root {
-  --sat: env(safe-area-inset-top, 0px);
-  --sab: env(safe-area-inset-bottom, 0px);
-}

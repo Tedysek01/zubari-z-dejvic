@@ -27,22 +27,14 @@ export function Nav() {
 
   return (
     <>
-      {/* Fixed navbar — covers status bar via safe-area padding */}
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled
-            ? "bg-linen backdrop-blur-xl border-b border-divider/50"
-            : "bg-linen"
+            ? "bg-linen py-3 border-b border-divider/50"
+            : "bg-linen py-5"
         }`}
-        style={{
-          paddingBottom: scrolled ? "0.75rem" : "1.25rem",
-          paddingTop: scrolled
-            ? "calc(0.75rem + env(safe-area-inset-top, 0px))"
-            : "calc(1.25rem + env(safe-area-inset-top, 0px))",
-        }}
       >
         <div className="max-w-[1200px] mx-auto px-6 flex items-center justify-between">
-          {/* Logo */}
           <a href="/" className="flex items-center gap-2">
             <img src="/logo.png" alt="" className="h-7 w-auto" />
             <span className="font-serif text-[1.25rem] tracking-tight">
@@ -50,7 +42,6 @@ export function Nav() {
             </span>
           </a>
 
-          {/* Desktop */}
           <div className="hidden md:flex items-center gap-8">
             {links.map((link) => (
               <a
@@ -69,7 +60,6 @@ export function Nav() {
             </a>
           </div>
 
-          {/* Mobile toggle */}
           <button
             className="md:hidden p-2"
             onClick={() => {
@@ -85,22 +75,14 @@ export function Nav() {
         </div>
       </nav>
 
-      {/* Spacer — reserves space below fixed nav (matches non-scrolled nav height) */}
-      <div style={{ height: "calc(env(safe-area-inset-top, 0px) + 1.25rem + 28px + 1.25rem)" }} />
+      {/* Spacer for fixed nav */}
+      <div className="h-[68px]" />
 
-      {/* Mobile overlay */}
       {mobileOpen && (
-        <div
-          className="fixed inset-0 bg-linen z-[200] flex flex-col items-center justify-center gap-8 overflow-y-auto"
-          style={{
-            paddingTop: "calc(4rem + env(safe-area-inset-top, 0px))",
-            paddingBottom: "calc(4rem + env(safe-area-inset-bottom, 0px))",
-          }}
-        >
+        <div className="fixed inset-0 bg-linen z-[200] flex flex-col items-center justify-center gap-8">
           <button
             onClick={closeMobile}
             className="absolute top-6 right-6 text-2xl p-2 cursor-pointer"
-            style={{ top: "calc(1.5rem + env(safe-area-inset-top, 0px))" }}
             aria-label="Zavřít"
           >
             &times;
