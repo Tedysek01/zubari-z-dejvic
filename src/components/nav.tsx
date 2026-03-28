@@ -28,7 +28,7 @@ export function Nav() {
   return (
     <>
       <nav
-        className={`sticky top-0 z-50 transition-all duration-300 before:absolute before:bottom-full before:left-0 before:right-0 before:h-[50px] before:bg-linen ${
+        className={`sticky top-0 z-50 transition-all duration-300 ${
           scrolled
             ? "bg-linen backdrop-blur-xl py-3 border-b border-divider/50"
             : "bg-linen py-5"
