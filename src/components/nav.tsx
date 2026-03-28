@@ -30,9 +30,15 @@ export function Nav() {
       <nav
         className={`sticky top-0 z-50 transition-all duration-300 ${
           scrolled
-            ? "bg-linen backdrop-blur-xl pb-3 pt-[calc(0.75rem+var(--sat))] border-b border-divider/50"
-            : "bg-linen pb-5 pt-[calc(1.25rem+var(--sat))]"
+            ? "bg-linen backdrop-blur-xl border-b border-divider/50"
+            : "bg-linen"
         }`}
+        style={{
+          paddingBottom: scrolled ? "0.75rem" : "1.25rem",
+          paddingTop: scrolled
+            ? "calc(0.75rem + env(safe-area-inset-top, 0px))"
+            : "calc(1.25rem + env(safe-area-inset-top, 0px))",
+        }}
       >
         <div className="max-w-[1200px] mx-auto px-6 flex items-center justify-between">
           {/* Logo */}
@@ -80,7 +86,13 @@ export function Nav() {
 
       {/* Mobile overlay — outside <nav> so backdrop-blur doesn't create a containing block */}
       {mobileOpen && (
-        <div className="fixed inset-0 bg-linen z-[200] flex flex-col items-center justify-center gap-8 overflow-y-auto pt-[calc(4rem+var(--sat))] pb-[calc(4rem+var(--sab))]">
+        <div
+          className="fixed inset-0 bg-linen z-[200] flex flex-col items-center justify-center gap-8 overflow-y-auto"
+          style={{
+            paddingTop: "calc(4rem + env(safe-area-inset-top, 0px))",
+            paddingBottom: "calc(4rem + env(safe-area-inset-bottom, 0px))",
+          }}
+        >
           <button
             onClick={closeMobile}
             className="absolute top-6 right-6 text-2xl p-2 cursor-pointer"
