@@ -13,8 +13,8 @@ import { Footer } from "@/components/footer";
 export default function Home() {
   return (
     <>
-      <Nav />
       <AnnouncementBar />
+      <Nav />
       <Hero />
       <Philosophy />
       <Services />

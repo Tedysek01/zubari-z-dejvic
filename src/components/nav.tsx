@@ -30,9 +30,15 @@ export function Nav() {
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled
-            ? "bg-linen py-3 border-b border-divider/50"
-            : "bg-linen py-5"
+            ? "bg-linen border-b border-divider/50"
+            : "bg-linen"
         }`}
+        style={{
+          paddingTop: scrolled
+            ? "calc(0.75rem + env(safe-area-inset-top, 0px))"
+            : "calc(1.25rem + env(safe-area-inset-top, 0px))",
+          paddingBottom: scrolled ? "0.75rem" : "1.25rem",
+        }}
       >
         <div className="max-w-[1200px] mx-auto px-6 flex items-center justify-between">
           <a href="/" className="flex items-center gap-2">
@@ -76,13 +82,23 @@ export function Nav() {
       </nav>
 
       {/* Spacer for fixed nav */}
-      <div className="h-[68px]" />
+      <div style={{ height: "calc(env(safe-area-inset-top, 0px) + 1.25rem + 28px + 1.25rem)" }} />
 
       {mobileOpen && (
-        <div className="fixed inset-0 bg-linen z-[200] flex flex-col items-center justify-center gap-8">
+        <div
+          className="fixed inset-0 bg-linen z-[200] flex flex-col items-center justify-center gap-8 overflow-y-auto"
+          style={{
+            paddingTop: "calc(4rem + env(safe-area-inset-top, 0px))",
+            paddingBottom: "calc(4rem + env(safe-area-inset-bottom, 0px))",
+          }}
+        >
           <button
             onClick={closeMobile}
-            className="absolute top-6 right-6 text-2xl p-2 cursor-pointer"
+            className="absolute text-2xl p-2 cursor-pointer"
+            style={{
+              top: "calc(1.5rem + env(safe-area-inset-top, 0px))",
+              right: "1.5rem",
+            }}
             aria-label="Zavřít"
           >
             &times;
