@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export function Hero() {
   return (
-    <section className="flex-1 flex items-center relative overflow-hidden py-12">
+    <section className="min-h-[calc(100dvh-8rem)] flex items-center relative overflow-hidden py-12">
       {/* Diagonal lines — architectural, from logo angle */}
       <div className="absolute top-0 right-0 w-[55%] h-full diagonal-lines-bold opacity-[0.07]" />
 

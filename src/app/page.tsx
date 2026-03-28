@@ -13,13 +13,9 @@ import { Footer } from "@/components/footer";
 export default function Home() {
   return (
     <>
-      <div className="flex flex-col min-h-dvh">
-        <div className="sticky top-0 z-50">
-          <AnnouncementBar />
-          <Nav />
-        </div>
-        <Hero />
-      </div>
+      <AnnouncementBar />
+      <Nav />
+      <Hero />
       <Philosophy />
       <Services />
       <Team />
