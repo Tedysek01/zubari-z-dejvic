@@ -27,14 +27,14 @@ export function Nav() {
 
   return (
     <>
+      {/* Fixed navbar — covers status bar via safe-area padding */}
       <nav
-        className={`sticky z-50 transition-all duration-300 ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled
             ? "bg-linen backdrop-blur-xl border-b border-divider/50"
             : "bg-linen"
         }`}
         style={{
-          top: "calc(-1 * env(safe-area-inset-top, 0px))",
           paddingBottom: scrolled ? "0.75rem" : "1.25rem",
           paddingTop: scrolled
             ? "calc(0.75rem + env(safe-area-inset-top, 0px))"
@@ -85,13 +85,14 @@ export function Nav() {
         </div>
       </nav>
 
-      {/* Mobile overlay — outside <nav> so backdrop-blur doesn't create a containing block */}
+      {/* Spacer — reserves space below fixed nav (matches non-scrolled nav height) */}
+      <div style={{ height: "calc(env(safe-area-inset-top, 0px) + 1.25rem + 28px + 1.25rem)" }} />
+
+      {/* Mobile overlay */}
       {mobileOpen && (
         <div
-          className="fixed bg-linen z-[200] flex flex-col items-center justify-center gap-8 overflow-y-auto left-0 right-0"
+          className="fixed inset-0 bg-linen z-[200] flex flex-col items-center justify-center gap-8 overflow-y-auto"
           style={{
-            top: "calc(-1 * env(safe-area-inset-top, 0px))",
-            bottom: "calc(-1 * env(safe-area-inset-bottom, 0px))",
             paddingTop: "calc(4rem + env(safe-area-inset-top, 0px))",
             paddingBottom: "calc(4rem + env(safe-area-inset-bottom, 0px))",
           }}
@@ -99,6 +100,7 @@ export function Nav() {
           <button
             onClick={closeMobile}
             className="absolute top-6 right-6 text-2xl p-2 cursor-pointer"
+            style={{ top: "calc(1.5rem + env(safe-area-inset-top, 0px))" }}
             aria-label="Zavřít"
           >
             &times;

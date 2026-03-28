@@ -8,10 +8,7 @@ export function AnnouncementBar() {
   if (!visible) return null;
 
   return (
-    <div
-      className="bg-teal-dark text-white text-center pb-2.5 px-6 text-[0.8rem] tracking-wide relative"
-      style={{ paddingTop: "calc(0.625rem + env(safe-area-inset-top, 0px))" }}
-    >
+    <div className="bg-teal-dark text-white text-center py-2.5 px-6 text-[0.8rem] tracking-wide relative">
       <span className="opacity-80">Přijímáme nové pacienty</span>
       <span className="mx-3 opacity-30">|</span>
       <a
