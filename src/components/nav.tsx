@@ -27,7 +27,7 @@ export function Nav() {
 
   return (
     <nav
-      className={`sticky top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`sticky top-0 z-50 transition-all duration-300 ${
         scrolled
           ? "bg-linen/90 backdrop-blur-xl py-3 border-b border-divider/50"
           : "bg-linen py-5"
@@ -77,7 +77,7 @@ export function Nav() {
 
         {/* Mobile overlay */}
         {mobileOpen && (
-          <div className="fixed inset-0 bg-linen z-[200] flex flex-col items-center justify-center gap-8">
+          <div className="fixed inset-0 bg-linen z-[200] flex flex-col items-center justify-center gap-8 overflow-y-auto py-16">
             <button
               onClick={closeMobile}
               className="absolute top-6 right-6 text-2xl p-2 cursor-pointer"

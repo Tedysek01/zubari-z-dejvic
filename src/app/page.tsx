@@ -14,8 +14,10 @@ export default function Home() {
   return (
     <>
       <div className="flex flex-col min-h-dvh">
-        <AnnouncementBar />
-        <Nav />
+        <div className="sticky top-0 z-50">
+          <AnnouncementBar />
+          <Nav />
+        </div>
         <Hero />
       </div>
       <Philosophy />
