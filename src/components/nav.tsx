@@ -30,8 +30,8 @@ export function Nav() {
       <nav
         className={`sticky top-0 z-50 transition-all duration-300 ${
           scrolled
-            ? "bg-linen backdrop-blur-xl py-3 border-b border-divider/50"
-            : "bg-linen py-5"
+            ? "bg-linen backdrop-blur-xl pb-3 pt-[calc(0.75rem+var(--sat))] border-b border-divider/50"
+            : "bg-linen pb-5 pt-[calc(1.25rem+var(--sat))]"
         }`}
       >
         <div className="max-w-[1200px] mx-auto px-6 flex items-center justify-between">
@@ -80,7 +80,7 @@ export function Nav() {
 
       {/* Mobile overlay — outside <nav> so backdrop-blur doesn't create a containing block */}
       {mobileOpen && (
-        <div className="fixed inset-0 bg-linen z-[200] flex flex-col items-center justify-center gap-8 overflow-y-auto py-16">
+        <div className="fixed inset-0 bg-linen z-[200] flex flex-col items-center justify-center gap-8 overflow-y-auto pt-[calc(4rem+var(--sat))] pb-[calc(4rem+var(--sab))]">
           <button
             onClick={closeMobile}
             className="absolute top-6 right-6 text-2xl p-2 cursor-pointer"
