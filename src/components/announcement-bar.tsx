@@ -8,7 +8,7 @@ export function AnnouncementBar() {
   if (!visible) return null;
 
   return (
-    <div className="bg-teal-dark text-white text-center py-2.5 px-6 text-[0.8rem] tracking-wide relative">
+    <div className="bg-teal-dark text-white text-center py-2.5 px-6 text-[0.8rem] tracking-wide relative safe-top">
       <span className="opacity-80">Přijímáme nové pacienty</span>
       <span className="mx-3 opacity-30">|</span>
       <a

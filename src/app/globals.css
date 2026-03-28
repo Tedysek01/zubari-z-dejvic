@@ -320,3 +320,16 @@ html {
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
+/* ============================================
+   SAFE AREA — iOS notch / Dynamic Island / Safari toolbar
+   Requires viewport-fit=cover in layout.tsx
+   ============================================ */
+@supports (padding: env(safe-area-inset-top)) {
+  .safe-top {
+    padding-top: env(safe-area-inset-top);
+  }
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
