@@ -28,12 +28,13 @@ export function Nav() {
   return (
     <>
       <nav
-        className={`sticky top-0 z-50 transition-all duration-300 ${
+        className={`sticky z-50 transition-all duration-300 ${
           scrolled
             ? "bg-linen backdrop-blur-xl border-b border-divider/50"
             : "bg-linen"
         }`}
         style={{
+          top: "calc(-1 * env(safe-area-inset-top, 0px))",
           paddingBottom: scrolled ? "0.75rem" : "1.25rem",
           paddingTop: scrolled
             ? "calc(0.75rem + env(safe-area-inset-top, 0px))"
@@ -87,8 +88,10 @@ export function Nav() {
       {/* Mobile overlay — outside <nav> so backdrop-blur doesn't create a containing block */}
       {mobileOpen && (
         <div
-          className="fixed inset-0 bg-linen z-[200] flex flex-col items-center justify-center gap-8 overflow-y-auto"
+          className="fixed bg-linen z-[200] flex flex-col items-center justify-center gap-8 overflow-y-auto left-0 right-0"
           style={{
+            top: "calc(-1 * env(safe-area-inset-top, 0px))",
+            bottom: "calc(-1 * env(safe-area-inset-bottom, 0px))",
             paddingTop: "calc(4rem + env(safe-area-inset-top, 0px))",
             paddingBottom: "calc(4rem + env(safe-area-inset-bottom, 0px))",
           }}
