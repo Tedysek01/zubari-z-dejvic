@@ -28,12 +28,13 @@ export function Nav() {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        className={`fixed left-0 right-0 z-50 transition-all duration-300 ${
           scrolled
             ? "bg-red-500 border-b border-divider/50"
             : "bg-red-500"
         }`}
         style={{
+          top: "calc(-1 * env(safe-area-inset-top, 0px))",
           paddingTop: scrolled
             ? "calc(0.75rem + env(safe-area-inset-top, 0px))"
             : "calc(1.25rem + env(safe-area-inset-top, 0px))",
