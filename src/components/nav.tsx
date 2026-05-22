@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
+import { AnnouncementBar } from "./announcement-bar";
 
 const links = [
   { href: "/#o-nas", label: "O nás" },
@@ -10,9 +11,12 @@ const links = [
   { href: "/#kontakt", label: "Kontakt" },
 ];
 
-export function Nav() {
+export function Nav({ showAnnouncement = false }: { showAnnouncement?: boolean }) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [barHeight, setBarHeight] = useState(0);
+
+  const onBarHeight = useCallback((h: number) => setBarHeight(h), []);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 60);
@@ -25,17 +29,26 @@ export function Nav() {
     document.body.style.overflow = "";
   };
 
+  // When scrolled, announcement hides and nav goes to top
+  const navTop = showAnnouncement && !scrolled ? barHeight : 0;
+
   return (
     <>
+      {showAnnouncement && (
+        <AnnouncementBar onHeightChange={onBarHeight} hidden={scrolled} />
+      )}
+
       <nav
-        className={`fixed left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled
-            ? "bg-red-500 border-b border-divider/50"
-            : "bg-red-500"
+        className={`fixed left-0 right-0 z-50 transition-all duration-300 bg-linen ${
+          scrolled ? "border-b border-divider/50" : ""
         }`}
         style={{
-          top: "-60px",
-          paddingTop: scrolled ? "calc(0.75rem + 60px)" : "calc(1.25rem + 60px)",
+          top: `${navTop}px`,
+          paddingTop: scrolled
+            ? "calc(env(safe-area-inset-top, 0px) + 0.75rem)"
+            : showAnnouncement
+              ? "1.25rem"
+              : "calc(env(safe-area-inset-top, 0px) + 1.25rem)",
           paddingBottom: scrolled ? "0.75rem" : "1.25rem",
         }}
       >
@@ -80,22 +93,22 @@ export function Nav() {
         </div>
       </nav>
 
-      {/* Spacer for fixed nav */}
-      <div style={{ height: "calc(env(safe-area-inset-top, 0px) + 1.25rem + 28px + 1.25rem)" }} />
+      {/* Spacer to push content below fixed nav + announcement */}
+      <div style={{ height: `${(showAnnouncement ? barHeight : 0) + 80}px` }} />
 
       {mobileOpen && (
         <div
           className="fixed inset-0 bg-linen z-[200] flex flex-col items-center justify-center gap-8 overflow-y-auto"
           style={{
-            paddingTop: "calc(4rem + env(safe-area-inset-top, 0px))",
-            paddingBottom: "calc(4rem + env(safe-area-inset-bottom, 0px))",
+            paddingTop: "calc(env(safe-area-inset-top, 0px) + 2rem)",
+            paddingBottom: "calc(env(safe-area-inset-bottom, 0px) + 2rem)",
           }}
         >
           <button
             onClick={closeMobile}
             className="absolute text-2xl p-2 cursor-pointer"
             style={{
-              top: "calc(1.5rem + env(safe-area-inset-top, 0px))",
+              top: "calc(env(safe-area-inset-top, 0px) + 1rem)",
               right: "1.5rem",
             }}
             aria-label="Zavřít"

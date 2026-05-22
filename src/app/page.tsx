@@ -1,4 +1,3 @@
-import { AnnouncementBar } from "@/components/announcement-bar";
 import { Nav } from "@/components/nav";
 import { Hero } from "@/components/hero";
 import { Philosophy } from "@/components/philosophy";
@@ -13,8 +12,7 @@ import { Footer } from "@/components/footer";
 export default function Home() {
   return (
     <>
-      <Nav />
-      <AnnouncementBar />
+      <Nav showAnnouncement />
       <Hero />
       <Philosophy />
       <Services />

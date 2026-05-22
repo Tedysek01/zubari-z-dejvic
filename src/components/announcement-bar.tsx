@@ -1,14 +1,43 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 
-export function AnnouncementBar() {
+export function AnnouncementBar({
+  onHeightChange,
+  hidden = false,
+}: {
+  onHeightChange?: (h: number) => void;
+  hidden?: boolean;
+}) {
   const [visible, setVisible] = useState(true);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!ref.current || !visible) return;
+    const ro = new ResizeObserver(() => {
+      onHeightChange?.(ref.current!.offsetHeight);
+    });
+    ro.observe(ref.current);
+    return () => ro.disconnect();
+  }, [visible, onHeightChange]);
+
+  useEffect(() => {
+    if (!visible) onHeightChange?.(0);
+  }, [visible, onHeightChange]);
 
   if (!visible) return null;
 
   return (
-    <div className="bg-teal-dark text-white text-center py-2.5 px-6 text-[0.8rem] tracking-wide relative">
+    <div
+      ref={ref}
+      className={`fixed top-0 left-0 right-0 z-[60] bg-teal-dark text-white text-center px-6 text-[0.8rem] tracking-wide transition-transform duration-300 ${
+        hidden ? "-translate-y-full" : "translate-y-0"
+      }`}
+      style={{
+        paddingTop: "calc(env(safe-area-inset-top, 0px) + 0.625rem)",
+        paddingBottom: "0.625rem",
+      }}
+    >
       <span className="opacity-80">Přijímáme nové pacienty</span>
       <span className="mx-3 opacity-30">|</span>
       <a

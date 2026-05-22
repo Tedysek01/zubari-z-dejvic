@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
-import { SubpageHeader } from "@/components/subpage-header";
 import { ScrollReveal } from "@/components/scroll-reveal";
 
 export const metadata: Metadata = {
@@ -112,11 +112,52 @@ export default function CenikPage() {
   return (
     <>
       <Nav />
-      <SubpageHeader
-        label="Ceník"
-        title="Přehled cen ošetření"
-        description="Ceník nadstandardních výkonů. Preventivní prohlídky a základní ošetření jsou hrazeny ze zdravotního pojištění."
-      />
+
+      {/* Hero section */}
+      <section className="relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-[40%] h-full diagonal-lines-bold opacity-[0.04]" />
+
+        <div className="max-w-[1200px] mx-auto px-6 relative z-10 pt-8 pb-16">
+          <div className="grid md:grid-cols-[1fr_320px] gap-12 items-center">
+            <div>
+              <ScrollReveal>
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-2 h-2 rounded-full bg-teal" />
+                  <span className="text-[0.72rem] tracking-[0.12em] uppercase text-teal-dark font-medium">
+                    Ceník
+                  </span>
+                </div>
+              </ScrollReveal>
+
+              <ScrollReveal delay={1}>
+                <h1 className="font-serif font-light text-[clamp(2.2rem,5vw,3.8rem)] leading-[1.08] tracking-[-0.01em] max-w-[700px] mb-6">
+                  Přehled cen{" "}
+                  <span className="text-teal-dark italic">ošetření</span>
+                </h1>
+              </ScrollReveal>
+
+              <ScrollReveal delay={2}>
+                <div className="w-16 h-[2px] bg-teal/40 mb-6" />
+                <p className="text-warm-gray text-[1.05rem] max-w-[540px] leading-[1.75]">
+                  Ceník nadstandardních výkonů. Preventivní prohlídky a základní
+                  ošetření jsou hrazeny ze zdravotního pojištění.
+                </p>
+              </ScrollReveal>
+            </div>
+
+            <ScrollReveal delay={1}>
+              <div className="relative aspect-[16/10] rounded-2xl overflow-hidden">
+                <Image
+                  src="/photos/pricing-consultation.webp"
+                  alt="Konzultace s pacientem"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </ScrollReveal>
+          </div>
+        </div>
+      </section>
 
       <section className="pb-28">
         <div className="max-w-[1200px] mx-auto px-6">
@@ -148,6 +189,9 @@ export default function CenikPage() {
                     <h2 className="font-serif text-[1.6rem] font-light">
                       {cat.title}
                     </h2>
+                    <span className="font-serif text-[2rem] text-teal/15 leading-none">
+                      {String(catIndex + 1).padStart(2, "0")}
+                    </span>
                   </div>
                   {cat.note && (
                     <p className="text-[0.82rem] text-teal-dark mb-6">

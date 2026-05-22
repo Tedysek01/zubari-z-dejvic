@@ -28,7 +28,6 @@ export const metadata: Metadata = {
   description:
     "Kvalitní stomatologie založená na důvěře, precizní práci a individuálním přístupu. Kafkova 16, Praha 6.",
   other: {
-    "theme-color": "#F5F1EC",
     "apple-mobile-web-app-status-bar-style": "default",
   },
 };

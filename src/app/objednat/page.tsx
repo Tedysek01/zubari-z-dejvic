@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
-import { SubpageHeader } from "@/components/subpage-header";
 import { ScrollReveal } from "@/components/scroll-reveal";
 
 export const metadata: Metadata = {
@@ -54,16 +54,61 @@ export default function ObjednatPage() {
   return (
     <>
       <Nav />
-      <SubpageHeader
-        label="Objednání"
-        title="Objednejte se k nám"
-        description="Přijímáme nové pacienty. Objednat se můžete telefonicky nebo emailem — ozveme se vám co nejdříve."
-      />
+
+      {/* Hero with entrance photo */}
+      <section className="relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-[40%] h-full diagonal-lines-bold opacity-[0.04]" />
+        <div className="absolute top-[15%] right-[10%] w-3 h-3 rounded-full bg-teal/20" />
+
+        <div className="max-w-[1200px] mx-auto px-6 relative z-10 pt-8 pb-16">
+          <div className="grid md:grid-cols-[1fr_300px] gap-12 items-center">
+            <div>
+              <ScrollReveal>
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-2 h-2 rounded-full bg-teal" />
+                  <span className="text-[0.72rem] tracking-[0.12em] uppercase text-teal-dark font-medium">
+                    Objednání
+                  </span>
+                </div>
+              </ScrollReveal>
+
+              <ScrollReveal delay={1}>
+                <h1 className="font-serif font-light text-[clamp(2.2rem,5vw,3.8rem)] leading-[1.08] tracking-[-0.01em] max-w-[700px] mb-6">
+                  Objednejte se{" "}
+                  <span className="text-teal-dark italic">k nám</span>
+                </h1>
+              </ScrollReveal>
+
+              <ScrollReveal delay={2}>
+                <div className="w-16 h-[2px] bg-teal/40 mb-6" />
+                <p className="text-warm-gray text-[1.05rem] max-w-[480px] leading-[1.75]">
+                  Přijímáme nové pacienty. Objednat se můžete telefonicky nebo
+                  emailem — ozveme se vám co nejdříve.
+                </p>
+              </ScrollReveal>
+            </div>
+
+            <ScrollReveal delay={1}>
+              <div className="relative">
+                <div className="relative aspect-[4/5] rounded-2xl rounded-tr-[60px] overflow-hidden">
+                  <Image
+                    src="/photos/booking-entrance.webp"
+                    alt="Vstup do ordinace"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <div className="absolute -bottom-3 -left-3 w-16 h-16 border-2 border-teal/15 rounded-xl rounded-tl-none -z-10" />
+              </div>
+            </ScrollReveal>
+          </div>
+        </div>
+      </section>
 
       <section className="pb-28">
         <div className="max-w-[1200px] mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-16 md:gap-20">
-            {/* Left — contact methods */}
+            {/* Left -- contact methods */}
             <div>
               <ScrollReveal>
                 <div className="space-y-8">
@@ -120,7 +165,7 @@ export default function ObjednatPage() {
               </ScrollReveal>
             </div>
 
-            {/* Right — hours */}
+            {/* Right -- hours */}
             <div>
               <ScrollReveal delay={1}>
                 <div className="mb-12">
@@ -188,6 +233,30 @@ export default function ObjednatPage() {
               </ScrollReveal>
             </div>
           </div>
+
+          {/* Location image */}
+          <ScrollReveal>
+            <div className="mt-20 relative rounded-2xl overflow-hidden">
+              <div className="aspect-[21/9] relative">
+                <Image
+                  src="/photos/booking-dejvice.webp"
+                  alt="Dejvice, Praha 6"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-r from-charcoal/50 to-transparent flex items-end p-8 md:p-12">
+                <div>
+                  <p className="font-serif text-white/90 text-[1.3rem] md:text-[1.6rem] font-light leading-[1.3]">
+                    Najdete nás v srdci Dejvic
+                  </p>
+                  <p className="text-white/60 text-[0.85rem] mt-2">
+                    Kafkova 605/16, Praha 6
+                  </p>
+                </div>
+              </div>
+            </div>
+          </ScrollReveal>
 
           {/* Emergency info */}
           <ScrollReveal>
